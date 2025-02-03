@@ -10,13 +10,14 @@ import { v4 as uuidv4 } from 'uuid'
 
 export default class OpenidsController {
   private validateScopes(requestedScopes: string, allowedScopes: string[]): string[] | null {
-    const requested = requestedScopes.split(',')
-      .map(scope => scope.trim())
+    const requested = requestedScopes
+      .split(',')
+      .map((scope) => scope.trim())
       .filter(Boolean)
 
     if (requested.length === 0) return null
 
-    const isValid = requested.every(scope => allowedScopes.includes(scope))
+    const isValid = requested.every((scope) => allowedScopes.includes(scope))
     return isValid ? requested : null
   }
 
@@ -28,9 +29,7 @@ export default class OpenidsController {
     const openidClient = await OpenidClient.findBy('client_id', clientId)
     if (!openidClient) return null
 
-    const allowedScopes = openidClient.allowedScopes
-      .split(',')
-      .map(s => s.trim())
+    const allowedScopes = openidClient.allowedScopes.split(',').map((s) => s.trim())
     const validScopes = this.validateScopes(scopes, allowedScopes)
     if (!validScopes) return null
 
@@ -50,7 +49,6 @@ export default class OpenidsController {
 
     return openidClient
   }
-
 
   async authorize({ request, response }: HttpContext) {
     const {

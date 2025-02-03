@@ -89,13 +89,11 @@ export default class OpenIDClientsController {
 
       const clientId = uuidv4()
       const clientSecret = uuidv4()
-      await OpenIDClientData
-        .merge({
-          ...data,
-          clientId,
-          clientSecret,
-        })
-        .save()
+      await OpenIDClientData.merge({
+        ...data,
+        clientId,
+        clientSecret,
+      }).save()
       return response.ok({
         success: true,
         message: 'OpenID client updated successfully.',

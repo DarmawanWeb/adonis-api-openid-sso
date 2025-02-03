@@ -13,7 +13,6 @@ import openidClientsRoutes from './routes/v1/openid_client_routes.js'
 import authRoutes from './routes/v1/auth_routes.js'
 import openidRoute from './routes/v1/openid_routes.js'
 
-
 router.get('/', async ({ response }: HttpContext) => {
   response.status(200).json({
     status: 200,
