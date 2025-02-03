@@ -5,4 +5,9 @@ export default class OpenIDSSOValidator {
     name: vine.string(),
     redirectUri: vine.string(),
   })
+
+  static registerSchema = vine.object({
+    email: vine.string().trim().email(),
+    password: vine.string().minLength(8).confirmed(),
+  })
 }

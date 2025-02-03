@@ -1,7 +1,7 @@
 const OpenIDClientsController = () => import('#controllers/openid_clients_controller')
 import router from '@adonisjs/core/services/router'
 
-export default function OpenIDClientsRoute() {
+export default function openIDClientsRoute() {
   router
     .group(() => {
       router.get('/', [OpenIDClientsController, 'index'])
