@@ -10,4 +10,9 @@ export default class OpenIDSSOValidator {
     email: vine.string().trim().email(),
     password: vine.string().minLength(8).confirmed(),
   })
+
+  static loginSchema = vine.object({
+    email: vine.string().trim().email(),
+    password: vine.string(),
+  })
 }

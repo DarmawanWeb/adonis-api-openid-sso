@@ -11,6 +11,7 @@ import router from '@adonisjs/core/services/router'
 import { HttpContext } from '@adonisjs/core/http'
 import openidClientsRoutes from './routes/v1/openid_client_routes.js'
 import authRoutes from './routes/v1/auth_routes.js'
+import openidRoute from './routes/v1/openid_routes.js'
 
 
 router.get('/', async ({ response }: HttpContext) => {
@@ -24,6 +25,7 @@ router
   .group(() => {
     openidClientsRoutes()
     authRoutes()
+    openidRoute()
   })
   .prefix('/api/v1')
 

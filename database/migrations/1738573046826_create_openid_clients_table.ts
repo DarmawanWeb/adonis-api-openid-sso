@@ -10,7 +10,7 @@ export default class extends BaseSchema {
       table.string('client_id').unique().notNullable()
       table.string('client_secret').notNullable()
       table.string('redirect_uri').notNullable()
-      table.string('allowed_scopes').notNullable().defaultTo('openid profile email')
+      table.string('allowed_scopes').notNullable().defaultTo('openid,profile,email')
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })
