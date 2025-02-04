@@ -18,6 +18,11 @@ export default await Env.create(new URL('../', import.meta.url), {
   HOST: Env.schema.string({ format: 'host' }),
   LOG_LEVEL: Env.schema.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace']),
 
+  BACKEND_URL: Env.schema.string(),
+  FRONTEND_URL: Env.schema.string(),
+  PASSWORD_RESET_PAGE_URL: Env.schema.string(),
+  EMAIL_VERIFY_PAGE_URL: Env.schema.string(),
+
   /*
   |----------------------------------------------------------
   | Variables for configuring database connection
@@ -35,4 +40,17 @@ export default await Env.create(new URL('../', import.meta.url), {
   |----------------------------------------------------------
   */
   SESSION_DRIVER: Env.schema.enum(['cookie', 'memory'] as const),
+
+  /*
+  |----------------------------------------------------------
+  | Variables for configuring the mail package
+  |----------------------------------------------------------
+  */
+  MAIL_MAILER: Env.schema.enum(['smtp'] as const),
+  MAIL_FROM: Env.schema.string(),
+  RESEND_API_KEY: Env.schema.string(),
+  SMTP_HOST: Env.schema.string(),
+  SMTP_PORT: Env.schema.string(),
+  SMTP_USERNAME: Env.schema.string(),
+  SMTP_PASSWORD: Env.schema.string(),
 })
